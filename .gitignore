@@ -3,6 +3,6 @@
 
 *.iml
 
-.target/*
+target/*
 
 *.class

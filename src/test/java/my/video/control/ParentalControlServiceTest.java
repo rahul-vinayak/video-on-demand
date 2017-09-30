@@ -39,7 +39,7 @@ public class ParentalControlServiceTest {
     }
 
     @Test
-    public void shouldReturnTrueIfControlPreferenceEqualToControlLevel() throws Exception{
+    public void shouldReturnTrueIfControlPreferenceEqualToControlLevel() throws Exception {
         when(mockMovieService.getParentalControlLevel(MOVIE_ID)).thenReturn("12");
 
         PCSResponse response = parentalControlService.isParentalControlSatisfied(TWELVE, MOVIE_ID);
@@ -48,7 +48,7 @@ public class ParentalControlServiceTest {
     }
 
     @Test
-    public void shouldReturnTrueIfControlPreferenceMoreThanControlLevel() throws Exception{
+    public void shouldReturnTrueIfControlPreferenceMoreThanControlLevel() throws Exception {
         when(mockMovieService.getParentalControlLevel(MOVIE_ID)).thenReturn("PG");
 
         PCSResponse response = parentalControlService.isParentalControlSatisfied(TWELVE, MOVIE_ID);
@@ -57,7 +57,7 @@ public class ParentalControlServiceTest {
     }
 
     @Test
-    public void shouldReturnFalseWithErrorIfControlPreferenceLessThanControlLevel() throws Exception{
+    public void shouldReturnFalseWithErrorIfControlPreferenceLessThanControlLevel() throws Exception {
         when(mockMovieService.getParentalControlLevel(MOVIE_ID)).thenReturn("18");
 
         PCSResponse response = parentalControlService.isParentalControlSatisfied(TWELVE, MOVIE_ID);
@@ -66,7 +66,7 @@ public class ParentalControlServiceTest {
     }
 
     @Test
-    public void shouldReturnFalseWithErrorWhenTitleNotFound() throws Exception{
+    public void shouldReturnFalseWithErrorWhenTitleNotFound() throws Exception {
         when(mockMovieService.getParentalControlLevel(MOVIE_ID)).thenThrow(new TitleNotFoundException("Title not found"));
 
         PCSResponse response = parentalControlService.isParentalControlSatisfied(TWELVE, MOVIE_ID);
@@ -75,7 +75,7 @@ public class ParentalControlServiceTest {
     }
 
     @Test
-    public void shouldReturnFalseWithErrorWhenTechnicalFailureException() throws Exception{
+    public void shouldReturnFalseWithErrorWhenTechnicalFailureException() throws Exception {
         when(mockMovieService.getParentalControlLevel(MOVIE_ID)).thenThrow(new TechnicalFailureException("Some technical failure occurred"));
 
         PCSResponse response = parentalControlService.isParentalControlSatisfied(TWELVE, MOVIE_ID);
@@ -84,7 +84,7 @@ public class ParentalControlServiceTest {
     }
 
     @Test
-    public void shouldReturnFalseWithErrorWhenControlLevelFromServiceCantBeMapped() throws Exception{
+    public void shouldReturnFalseWithErrorWhenControlLevelFromServiceCantBeMapped() throws Exception {
         when(mockMovieService.getParentalControlLevel(MOVIE_ID)).thenReturn("365");
 
         PCSResponse response = parentalControlService.isParentalControlSatisfied(TWELVE, MOVIE_ID);
@@ -93,7 +93,7 @@ public class ParentalControlServiceTest {
     }
 
     @Test
-    public void shouldReturnFalseWithErrorWhenControlLevelFromServiceIsNull() throws Exception{
+    public void shouldReturnFalseWithErrorWhenControlLevelFromServiceIsNull() throws Exception {
         when(mockMovieService.getParentalControlLevel(MOVIE_ID)).thenReturn(null);
 
         PCSResponse response = parentalControlService.isParentalControlSatisfied(TWELVE, MOVIE_ID);

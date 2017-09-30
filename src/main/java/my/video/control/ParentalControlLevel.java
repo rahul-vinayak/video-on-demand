@@ -21,6 +21,6 @@ public enum ParentalControlLevel {
                 .of(ParentalControlLevel.values())
                 .filter(pcl -> pcl.levelCode.equals(levelCode))
                 .findFirst()
-                .orElseThrow(() -> new PCLException("Failed to map the control level to "+levelCode));
+                .orElseThrow(() -> new PCLException("Failed to map the control level to " + levelCode));
     }
 }
