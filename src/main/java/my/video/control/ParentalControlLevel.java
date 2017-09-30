@@ -1,11 +1,7 @@
 package my.video.control;
 
-import java.util.Optional;
 import java.util.stream.Stream;
 
-/**
- * Created by rahul on 30/09/2017.
- */
 public enum ParentalControlLevel {
 
     U("U"),
@@ -20,15 +16,11 @@ public enum ParentalControlLevel {
         this.levelCode = levelCode;
     }
 
-    public String getLevelCode() {
-        return this.levelCode;
-    }
-
-    public static ParentalControlLevel ofCode(String level) throws PCLException {
+    public static ParentalControlLevel ofLevelCode(String levelCode) throws PCLException {
         return Stream
                 .of(ParentalControlLevel.values())
-                .filter(pcl -> pcl.levelCode.equals(level))
+                .filter(pcl -> pcl.levelCode.equals(levelCode))
                 .findFirst()
-                .orElseThrow(() -> new PCLException("Failed to get the correct control level"));
+                .orElseThrow(() -> new PCLException("Failed to map the control level to "+levelCode));
     }
 }

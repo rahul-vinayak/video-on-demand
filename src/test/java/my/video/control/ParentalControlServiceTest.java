@@ -10,9 +10,6 @@ import static my.video.control.ParentalControlLevel.TWELVE;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
-/**
- * Created by rahul on 30/09/2017.
- */
 @RunWith(MockitoJUnitRunner.class)
 public class ParentalControlServiceTest {
 
@@ -74,7 +71,7 @@ public class ParentalControlServiceTest {
 
         PCSResponse response = parentalControlService.isParentalControlSatisfied(TWELVE, MOVIE_ID);
         assertFalse(response.isSatisfied());
-        assertEquals("Title for the movie with id:movie-123 not found", response.getMessage());
+        assertEquals("Movie not found with id: movie-123", response.getMessage());
 
     }
 
@@ -84,7 +81,7 @@ public class ParentalControlServiceTest {
 
         PCSResponse response = parentalControlService.isParentalControlSatisfied(TWELVE, MOVIE_ID);
         assertFalse(response.isSatisfied());
-        assertEquals("You cannot watch the movie at this time", response.getMessage());
+        assertEquals("Movie cannot be watched at this time", response.getMessage());
 
     }
 
@@ -94,7 +91,7 @@ public class ParentalControlServiceTest {
 
         PCSResponse response = parentalControlService.isParentalControlSatisfied(TWELVE, MOVIE_ID);
         assertFalse(response.isSatisfied());
-        assertEquals("You cannot watch the movie at this time", response.getMessage());
+        assertEquals("Movie cannot be watched at this time", response.getMessage());
 
     }
 }
