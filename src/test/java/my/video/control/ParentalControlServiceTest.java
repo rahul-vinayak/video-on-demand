@@ -72,7 +72,6 @@ public class ParentalControlServiceTest {
         PCSResponse response = parentalControlService.isParentalControlSatisfied(TWELVE, MOVIE_ID);
         assertFalse(response.isSatisfied());
         assertEquals("Movie not found with id: movie-123", response.getMessage());
-
     }
 
     @Test
@@ -82,7 +81,6 @@ public class ParentalControlServiceTest {
         PCSResponse response = parentalControlService.isParentalControlSatisfied(TWELVE, MOVIE_ID);
         assertFalse(response.isSatisfied());
         assertEquals("Movie cannot be watched at this time", response.getMessage());
-
     }
 
     @Test
@@ -92,6 +90,14 @@ public class ParentalControlServiceTest {
         PCSResponse response = parentalControlService.isParentalControlSatisfied(TWELVE, MOVIE_ID);
         assertFalse(response.isSatisfied());
         assertEquals("Movie cannot be watched at this time", response.getMessage());
+    }
 
+    @Test
+    public void shouldReturnFalseWithErrorWhenControlLevelFromServiceIsNull() throws Exception{
+        when(mockMovieService.getParentalControlLevel(MOVIE_ID)).thenReturn(null);
+
+        PCSResponse response = parentalControlService.isParentalControlSatisfied(TWELVE, MOVIE_ID);
+        assertFalse(response.isSatisfied());
+        assertEquals("Movie cannot be watched at this time", response.getMessage());
     }
 }
