@@ -11,3 +11,6 @@ mvn clean install
 ParentalControlServiceImpl is the implementation of the interface to ParentalControlService having method isParentalControlSatisfied(ParentalControlLevel parentalControlLevelPreference, String movieId)
 
 params are ParentalControlPreference(enum ParentalControlLevel) and the MovieID(String) to be passed in by the client. 
+
+The tests are in the class ParentalControlServiceTest.java
+
